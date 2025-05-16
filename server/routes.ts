@@ -9,7 +9,7 @@ import {
   checklistParamsSchema,
   currencyConvertSchema 
 } from "../shared/schema";
-import { sendMessage, generateItinerary, generateChecklist } from "./services/openai";
+import { sendMessage, generateItinerary, generateChecklist } from "./services/openai.ts";
 import { getExchangeRates, convertCurrency, getDolarRate } from "./services/currency";
 
 export async function registerRoutes(app: Express): Promise<Server> {
