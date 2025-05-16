@@ -25,7 +25,15 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true,
+    outDir: "dist/public", // Diretório de saída
+    emptyOutDir: true, // Limpa o diretório antes do build
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"], // Divida bibliotecas grandes em chunks separados
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000, // Ajuste o limite de chunk para evitar o aviso
   },
 });
