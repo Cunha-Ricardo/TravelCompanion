@@ -123,9 +123,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Destinations API (for searching and filtering destinations)
   app.get("/api/destinations", async (req, res) => {
     try {
-      const searchTerm = req.query.search as string || "";
-      const continent = req.query.continent as string || "";
-      const type = req.query.type as string || "";
+      const searchTerm = (req.query.search as string) || "";
+      const continent = (req.query.continent as string) || "";
+      const type = (req.query.type as string) || "";
       
       const destinations = await storage.searchDestinations(searchTerm, continent, type);
       return res.status(200).json(destinations);
